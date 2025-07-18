@@ -1,0 +1,95 @@
+{% schema %}
+{
+  "name": "Custom Signup Form",
+  "target": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "form_title",
+      "label": "Form Title",
+      "default": "Create Account"
+    },
+    {
+      "type": "text",
+      "id": "submit_button_text",
+      "label": "Submit Button Text",
+      "default": "Sign Up"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="custom-signup-form">
+  <h2>{{ block.settings.form_title }}</h2>
+  <div
+    id="reseller-info"
+    style="display: none; background: #f0f0f0; padding: 10px; margin-bottom: 15px; border-radius: 5px;"
+  >
+    Referred by: <strong id="reseller-name"></strong>
+  </div>
+  <form
+    id="custom-signup-form"
+    data-app-url="{{ shop.url }}/apps/{{ app.handle }}"
+    data-login-url="{{ routes.account_login_url }}"
+    data-shop-domain="{{ shop.domain }}"
+  >
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" name="firstName" required>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" name="lastName" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <button type="submit">{{ block.settings.submit_button_text }}</button>
+    <div class="form-message" style="display: none;"></div>
+  </form>
+</div>
+
+<script src="{{ 'signup-form.js' | asset_url }}" defer></script>
+<style>
+  /* Add basic styling that inherits from theme */
+  .custom-signup-form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--color-border, #ccc);
+    border-radius: var(--border-radius, 4px);
+  }
+
+  .form-message {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 4px;
+  }
+
+  .form-message.error {
+    background-color: #fee;
+    color: #c00;
+  }
+
+  .form-message.success {
+    background-color: #efe;
+    color: #060;
+  }
+</style>
