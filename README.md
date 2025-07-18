@@ -23,7 +23,7 @@ A Shopify app that provides a customizable signup form with reseller tracking ca
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/custom-signup-app.git
+git clone https://github.com/feraraujofilho/custom-signup-app.git
 cd custom-signup-app
 ```
 
@@ -265,4 +265,5 @@ For issues, questions, or contributions, please:
 ---
 
 Made with ❤️ for Shopify merchants
+
 # custom-shopify-signup
