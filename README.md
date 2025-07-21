@@ -217,21 +217,13 @@ Creates a new customer with optional reseller metafield.
 ### Build for Production
 
 ```bash
-npm run build
-# or
-yarn build
-# or
-pnpm build
+shopify app dev
 ```
 
 ### Deploy to Shopify
 
 ```bash
-npm run deploy
-# or
-yarn deploy
-# or
-pnpm deploy
+shopify app deploy
 ```
 
 ### Environment Variables
