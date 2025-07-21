@@ -85,11 +85,7 @@ Create a `.env` file based on `.env.example` (if available) or ensure your Shopi
 ### 4. Run the Development Server
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm run dev
+shopify app dev
 ```
 
 The Shopify CLI will guide you through:
@@ -215,12 +211,6 @@ Creates a new customer with optional reseller metafield.
 - ✅ Redirect functionality
 
 ## 🚀 Deployment
-
-### Build for Production
-
-```bash
-shopify app dev
-```
 
 ### Deploy to Shopify
 
