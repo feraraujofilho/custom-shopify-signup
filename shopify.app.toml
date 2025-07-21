@@ -3,7 +3,7 @@
 client_id = "2101b244f477b6e57f0635d6f8a1f721"
 name = "custom-signup-app"
 handle = "custom-signup-app"
-application_url = "https://carrier-mesh-handhelds-bed.trycloudflare.com"
+application_url = "https://shop-east-demands-chick.trycloudflare.com"
 embedded = true
 
 [build]
@@ -26,10 +26,10 @@ api_version = "2025-07"
 scopes = "read_customers,write_customers,write_products"
 
 [auth]
-redirect_urls = ["https://carrier-mesh-handhelds-bed.trycloudflare.com/auth/callback", "https://carrier-mesh-handhelds-bed.trycloudflare.com/auth/shopify/callback", "https://carrier-mesh-handhelds-bed.trycloudflare.com/api/auth/callback"]
+redirect_urls = ["https://shop-east-demands-chick.trycloudflare.com/auth/callback", "https://shop-east-demands-chick.trycloudflare.com/auth/shopify/callback", "https://shop-east-demands-chick.trycloudflare.com/api/auth/callback"]
 
 [app_proxy]
-url = "https://carrier-mesh-handhelds-bed.trycloudflare.com/api"
+url = "https://shop-east-demands-chick.trycloudflare.com/api"
 subpath = "custom-signup"
 prefix = "apps"
 

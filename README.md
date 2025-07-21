@@ -1,6 +1,27 @@
 # Custom Signup App for Shopify
 
-A Shopify app that provides a customizable signup form with reseller tracking capabilities through URL parameters. This app enables merchants to track customer referrals and create custom signup experiences for their stores.
+A Shopify app that provides a customizable signup form with reseller tracking capabilities through URL parameters using [Theme Extensions](https://shopify.dev/docs/apps/online-store/theme-app-extensions). This app enables merchants to track customer referrals and create custom signup experiences for their stores.
+
+## ⚠️ Important Disclaimer
+
+**This is an example application demonstrating how to customize the signup flow in Shopify. It is NOT production-ready and serves as a starting point for development.**
+
+### Known Limitations
+
+1. **Customer Account Bypass**: The standard Shopify login page remains unchanged. Customers can still:
+   - Navigate directly to the native login page
+   - Create accounts through the default Shopify signup form (only email)
+   - Bypass the custom signup form entirely
+
+2. **Incomplete Coverage**: For users that manage to go directly to the native signup page, make sure you:
+   - Implement customer account UI extensions to get the extra data within the customer account
+   - Add validation logic for accounts created outside the custom form
+
+3. **Production Considerations**:
+   - Add proper error handling and logging
+   - Add comprehensive input validation
+   - Set up monitoring and analytics
+   - Handle edge cases
 
 ## 🚀 Features
 
@@ -11,12 +32,30 @@ A Shopify app that provides a customizable signup form with reseller tracking ca
 - **Automatic Redirects**: Seamlessly redirect customers to the login page after successful registration
 - **Theme Integration**: Easy-to-configure theme extension with customizable settings
 
-## 📋 Requirements
+## 📋 Development Requirements
 
 - Node.js 18.20 or higher
 - Shopify CLI
 - A Shopify Partner account
 - A development store for testing
+
+## 🚀 Production Requirements
+
+### Minimum Requirements
+
+- **Hosting**: Server with Node.js 18.20+ support (Heroku, AWS, Fly.io, etc.)
+- **Database**: PostgreSQL or MySQL (not SQLite)
+- **Domain**: HTTPS-enabled domain with SSL certificate
+- **Shopify**: Production app created in Partner Dashboard
+
+### Essential Environment Variables
+
+```bash
+SHOPIFY_API_KEY=your_production_api_key
+SHOPIFY_API_SECRET=your_production_api_secret
+DATABASE_URL=postgresql://user:pass@host:5432/dbname
+NODE_ENV=production
+```
 
 ## 🛠️ Installation
 
@@ -213,11 +252,11 @@ Ensure these environment variables are set in your production environment:
 - Ensure the app has the correct access scopes
 - Check that the session is valid
 - Verify the app proxy configuration
+- If you are still facing issues, uninstall and install the app again in your store
 
 **2. Metafield Not Showing in Admin**
 
 - Run the setup route to create the metafield definition
-- Ensure the metafield is set as "pinned"
 - Check that the namespace and key match exactly
 
 **3. Form Not Appearing in Theme**
@@ -234,6 +273,39 @@ Enable debug logging by setting:
 console.log("Metafield definition setup:", setupFetcher.data);
 ```
 
+## 🚧 Production Improvements
+
+To make this app production-ready, consider implementing:
+
+### 1. Customer Account Extensions
+
+- Use [Customer Account UI Extensions](https://shopify.dev/docs/apps/customer-accounts) to customize the native login/signup experience
+- Implement validation rules for all customer creation paths
+- Add custom fields to the native signup form
+
+### 2. Webhook Handlers
+
+```javascript
+// Handle customers created through other channels
+export const webhooks = {
+  CUSTOMERS_CREATE: {
+    deliveryMethod: DeliveryMethod.Http,
+    callbackUrl: "/webhooks/customers/create",
+    callback: async (topic, shop, body) => {
+      // Check if customer has reseller metafield
+      // If not, flag for review or apply default handling
+    },
+  },
+};
+```
+
+### 3. Enhanced Validation
+
+- Implement server-side rate limiting
+- Add CAPTCHA or other anti-bot measures
+- Validate email domains if needed
+- Check for duplicate signup attempts
+
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -241,10 +313,6 @@ console.log("Metafield definition setup:", setupFetcher.data);
 3. Commit your changes (`git commit -m 'Add amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🔗 Resources
 
