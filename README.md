@@ -273,65 +273,13 @@ Enable debug logging by setting:
 console.log("Metafield definition setup:", setupFetcher.data);
 ```
 
-## 🚧 Production Improvements
-
-To make this app production-ready, consider implementing:
-
-### 1. Customer Account Extensions
-
-- Use [Customer Account UI Extensions](https://shopify.dev/docs/apps/customer-accounts) to customize the native login/signup experience
-- Implement validation rules for all customer creation paths
-- Add custom fields to the native signup form
-
-### 2. Webhook Handlers
-
-```javascript
-// Handle customers created through other channels
-export const webhooks = {
-  CUSTOMERS_CREATE: {
-    deliveryMethod: DeliveryMethod.Http,
-    callbackUrl: "/webhooks/customers/create",
-    callback: async (topic, shop, body) => {
-      // Check if customer has reseller metafield
-      // If not, flag for review or apply default handling
-    },
-  },
-};
-```
-
-### 3. Enhanced Validation
-
-- Implement server-side rate limiting
-- Add CAPTCHA or other anti-bot measures
-- Validate email domains if needed
-- Check for duplicate signup attempts
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
 ## 🔗 Resources
 
 - [Shopify App Development](https://shopify.dev/docs/apps)
 - [Remix Documentation](https://remix.run/docs)
-- [Shopify Polaris](https://polaris.shopify.com/)
 - [Metafields Documentation](https://shopify.dev/docs/apps/build/custom-data/metafields)
 - [Theme Extensions](https://shopify.dev/docs/apps/online-store/theme-app-extensions)
-
-## 📞 Support
-
-For issues, questions, or contributions, please:
-
-1. Check the [Issues](https://github.com/yourusername/custom-signup-app/issues) page
-2. Review the troubleshooting guide above
-3. Create a new issue with detailed information
 
 ---
 
 Made with ❤️ for Shopify merchants
-
-# custom-shopify-signup
