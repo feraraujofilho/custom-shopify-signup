@@ -2,6 +2,8 @@
 
 A Shopify app that provides a customizable signup form with reseller tracking capabilities through URL parameters using [Theme Extensions](https://shopify.dev/docs/apps/online-store/theme-app-extensions). This app enables merchants to track customer referrals and create custom signup experiences for their stores.
 
+[Demo](https://screenshot.click/Custom_Signup_Form.mp4)
+
 ## ⚠️ Important Disclaimer
 
 **This is an example application demonstrating how to customize the signup flow in Shopify. It is NOT production-ready and serves as a starting point for development.**
